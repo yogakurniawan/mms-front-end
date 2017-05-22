@@ -44,13 +44,8 @@ class Main extends React.Component {
       <Layout className="Main" {...layoutProps}>
         <div className="row">
           <div className="col-xs-12 col-sm-6 col-md-5 col-lg-4" style={{ paddingRight: 0 }}>
-            <EmployeeList {...employeeListProps} />
-            <FloatingActionButton onClick={openDialog} className="Main__AddEmployeeIcon" secondary={true}>
-              <ContentAdd />
-            </FloatingActionButton>
           </div>
           <div className="col-xs-12 col-sm-6 col-md-7 col-lg-8" style={{ paddingLeft: 0, paddingRight: 0 }}>
-            <Tabs />
           </div>
         </div>
         <NewEmployee />
