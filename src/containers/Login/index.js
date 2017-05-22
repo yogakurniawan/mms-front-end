@@ -26,14 +26,8 @@ class Login extends React.Component {
   };
 
   handleSubmit = (evt) => {
-    const { login, loginDetails, pushState, getLoggedInUserInfo } = this.props;
-    const { username, password } = loginDetails;
-    evt.preventDefault();
-    login(username, password).then((response) => {
-      getLoggedInUserInfo().then(() => pushState('/main'));
-    }).catch(() => {
-      this.handleOpen();
-    });
+    const { pushState } = this.props;
+    pushState('/main')
   }
 
   render() {
