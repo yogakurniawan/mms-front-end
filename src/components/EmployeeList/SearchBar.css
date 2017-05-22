@@ -1,0 +1,13 @@
+.SearchBar {
+  box-sizing: border-box;
+  background: #5c6bc0;
+  color: #fff;
+  position: relative;
+  width: 100%;
+}
+
+.SearchBar__IconSearch {
+  margin: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}

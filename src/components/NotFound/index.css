@@ -1,0 +1,15 @@
+.NotFound__MiddleBox {
+  max-width: 400px;
+  z-index: 100;
+  margin: 0 auto;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.NotFound__MiddleBox h1 {
+  font-size: 170px;
+}
+
+.NotFound__FontBold {
+  font-weight: 600;
+}

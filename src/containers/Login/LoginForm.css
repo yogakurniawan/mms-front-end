@@ -1,0 +1,44 @@
+.LoginForm {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.LoginForm__Container {
+  margin: 0 auto;
+  margin-top: 25vh;
+  max-width: 450px;
+  box-shadow: 0px 0px 30px 1px rgba(0, 0, 0, 0.4);
+  transform: perspective(1px) translateZ(0);
+  transition-duration: 0.8s;
+  transition-property: color, background-color;
+}
+
+.LoginForm__HeaderBox {
+  padding: 10px;
+  text-align: center;
+  background: #3f51b5;
+}
+
+.LoginForm__HeaderBox span {
+  font-size: 1.25em;
+  font-weight: 500;
+  color: #fff;
+}
+
+.LoginForm__ContentBox {
+  padding: 10px;
+}
+
+.LoginForm__RmsInputField {
+  padding: 0px 1em 1em;
+}
+
+.LoginForm__RmsLoginButton {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.LoginForm__RmsLoginButtonWrapper {
+  padding: 0px 1em 1em;
+  text-align: right;
+}

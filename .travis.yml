@@ -1,0 +1,17 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+- 6
+script:
+- yarn build
+deploy:
+  provider: heroku
+  api_key:
+    secure: rVjBRFD6Vi8B6jL0IuqiHL5WH3Ve/pxXqygUzM5tPdwTzVn8T+xHPIxWiUardOqN9sXEj8XZTGJuUc3d2lMUBvCB+3FlTtoiHHXVtDH/2p/4IzlaKq10lDzgwYUoDXVtEFK+AAmI+NeosZ5SActyjXf3GPfbnMNCBcjqcI6Yu2VQH97KYyKv5878BCIDl+g1tsyRHcYyPjh6ZkNeMwObvzXsbGZx5aBFbaxX3ahVgtdv7rzlKjGo9e5Q9Cc9jmQT1PGGargksmjw8hAq4TYmUW1FOPlOsKSwQTirKwhaU+nOGq3KMeoNO6dmeO7eB5eHxgFiqRsyvYEMm8Mk4HGrXD2kXh9gYjPq3sxU30Yt8x8E3gCC/NYY4kNlGwWdlNR2+V88U7Zcf2Cyw4WzZXwIqou3YhDH1OD25WSUxJcZMgUuCY7OjyOIXxfV5K8LfQWx30OewvIj+lE7VWfVIXBvIpAg230iFIlbKq3+DP8EEZHq5K6uJz2nmmiJ/uMsCneXAhL2HgAjo7utgvVtmqKRpUzkdi/19PdtqHlqXpHumkSlLJ+gdR4whN6wuhsJUnFbAtihf6eNKC5VrAsXrSr/oUOXA2klauKw5uCNyaGNOU/F8ZOaMuf3c+P7fFc79MjS8RcKa/t8D38aRk8hA6mB/tv1J6JWEAyL1QV+GuQmzlU=
+  app:
+    master: rms-frontend
+branches:
+  only:
+  - master
+  - stable
