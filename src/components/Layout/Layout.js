@@ -9,6 +9,7 @@ import {
   Drawer
 } from 'material-ui';
 import { white, indigo500 } from 'material-ui/styles/colors';
+import { Grid } from 'react-flexbox-grid';
 
 const titleIcon = (
   <FontIcon color={white} className='material-icons'>person_outline</FontIcon>
@@ -77,9 +78,9 @@ class Layout extends React.Component {
           />
           {this.renderNavMenu()}
         </Drawer>
-        <div id="Layout" className="container-fluid Layout" style={{ paddingRight: '1rem', paddingLeft: 0 }}>
+        <Grid fluid id="Layout" className="Layout" style={{ paddingRight: '1rem', paddingLeft: 0 }}>
           {children}
-        </div>
+        </Grid>
       </div>
     );
   }

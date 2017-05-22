@@ -29,11 +29,11 @@ export default () => {
   return (
     <Route path="/" component={App}>
       <IndexRedirect to="login" />
-      <Route onEnter={isLoggedIn}>
+      <Route>
         <Route path="login" component={Login} />
       </Route>
 
-      <Route onEnter={requireLogin}>
+      <Route>
         <Route path="main" component={Main} />
       </Route>
       <Route path="*" component={NotFound} status={404} />

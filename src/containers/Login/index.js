@@ -27,7 +27,8 @@ class Login extends React.Component {
 
   handleSubmit = (evt) => {
     const { pushState } = this.props;
-    pushState('/main')
+    evt.preventDefault();
+    pushState('/main');
   }
 
   render() {

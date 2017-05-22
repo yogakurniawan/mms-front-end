@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import logoUrl from './rms-logo.png';
 import './LoginLayout.css';
+import { Row, Col } from 'react-flexbox-grid';
 
 function LoginLayout({ children }) {
   return (
     <div>
       <div className="LoginLayout">
-        <div className="row center-xs">
-          <div className="col-xs-12">
+        <Row center="xs">
+          <Col xs={12}>
             <span><img src={logoUrl} alt="RMS" /></span>
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
       { children }
     </div>

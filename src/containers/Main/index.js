@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import { Row, Col } from 'react-flexbox-grid';
 import {
   auth as authActions,
   employee as employeeActions,
@@ -42,12 +43,11 @@ class Main extends React.Component {
     };
     return (
       <Layout className="Main" {...layoutProps}>
-        <div className="row">
-          <div className="col-xs-12 col-sm-6 col-md-5 col-lg-4" style={{ paddingRight: 0 }}>
-          </div>
-          <div className="col-xs-12 col-sm-6 col-md-7 col-lg-8" style={{ paddingLeft: 0, paddingRight: 0 }}>
-          </div>
-        </div>
+        <Row>
+          <Col xs={12} style={{ paddingRight: 0 }}>
+            <p>Hello World!!</p>
+          </Col>
+        </Row>
         <NewEmployee />
       </Layout>
     );
