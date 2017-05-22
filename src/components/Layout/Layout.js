@@ -47,25 +47,13 @@ class Layout extends React.Component {
     ];
   }
 
-  renderTitle() {
-    const { userInfo } = this.props;
-    return (
-      <div>
-        <Avatar icon={titleIcon} />
-        <span style={{ marginLeft: '10px' }}>
-          {`${userInfo.firstName} ${userInfo.lastName}`} <span style={{ fontSize: '14px' }}>{`(${userInfo.jobFamily} - ${userInfo.grade})`}</span>
-        </span>
-      </div>
-    );
-  }
-
   render() {
     const { lnOpen } = this.state;
     const { children } = this.props;
     return (
       <div>
         <AppBar
-          title={this.renderTitle()}
+          title=""
           zDepth={0}
           onLeftIconButtonTouchTap={this.handleToggleLeftNav}
           iconElementRight={this.renderRightIcons()} />
