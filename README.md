@@ -1,2 +1,2 @@
-# RMS Front End
-A front end of Resource Management Application built with React & Redux.
+# MMS PoC Front End
+A front end of MMS PoC built with React & Redux.
