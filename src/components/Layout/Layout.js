@@ -57,12 +57,10 @@ class Layout extends React.Component {
           zDepth={0}
           onLeftIconButtonTouchTap={this.handleToggleLeftNav}
           iconElementRight={this.renderRightIcons()} />
-        <Drawer docked={false} width={300} open={lnOpen}>
+        <Drawer onRequestChange={this.handleToggleLeftNav} docked={false} width={300} open={lnOpen}>
           <AppBar
-            title="Menu"
+            title="MMS Menu"
             zDepth={0}
-            iconElementLeft={<IconButton iconClassName="material-icons">arrow_back</IconButton>}
-            onLeftIconButtonTouchTap={this.handleToggleLeftNav}
           />
           {this.renderNavMenu()}
         </Drawer>

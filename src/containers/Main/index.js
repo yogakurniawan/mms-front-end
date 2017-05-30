@@ -12,8 +12,6 @@ import {
 import { loadItem } from '../../utils/localStorage';
 import { Layout } from '../../components/Layout';
 import Tabs from '../../components/Tabs';
-import EmployeeList from '../../components/EmployeeList';
-import NewEmployee from '../../containers/NewEmployee';
 import './Main.css';
 
 class Main extends React.Component {
@@ -34,9 +32,6 @@ class Main extends React.Component {
   render() {
     const { employeeList, openDialog } = this.props;
     const userInfo = loadItem('userInfo')
-    const employeeListProps = {
-      list: employeeList
-    };
     const layoutProps = {
       logout: this.handleLogout,
       userInfo
@@ -48,7 +43,6 @@ class Main extends React.Component {
             <p>Hello World!!</p>
           </Col>
         </Row>
-        <NewEmployee />
       </Layout>
     );
   }

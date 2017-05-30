@@ -28,7 +28,7 @@ export default () => {
    */
   return (
     <Route path="/" component={App}>
-      <IndexRedirect to="login" />
+      <IndexRedirect to="main" />
       <Route>
         <Route path="login" component={Login} />
       </Route>
