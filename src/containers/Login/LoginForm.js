@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
-import { renderTextField } from '../../components/Form';
+import { renderTextField } from 'components/Form';
 import './LoginForm.css';
 
 class LoginForm extends React.Component {

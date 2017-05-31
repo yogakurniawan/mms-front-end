@@ -2,18 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   FontIcon,
-  MenuItem,
-  Avatar,
   IconButton,
   AppBar,
   Drawer
 } from 'material-ui';
-import { white, indigo500 } from 'material-ui/styles/colors';
+import { List, ListItem, makeSelectable } from 'material-ui/List';
+import { white } from 'material-ui/styles/colors';
 import { Grid } from 'react-flexbox-grid';
 
-const titleIcon = (
-  <FontIcon color={white} className='material-icons'>person_outline</FontIcon>
-);
+const SelectableList = makeSelectable(List);
 
 class Layout extends React.Component {
   constructor(props) {
@@ -40,10 +37,30 @@ class Layout extends React.Component {
   }
 
   renderNavMenu() {
-    const { logout } = this.props;
     return [
-      <MenuItem key="settings" onClick={() => { }} leftIcon={<FontIcon color={indigo500} className='material-icons'>settings</FontIcon>}>Settings</MenuItem>,
-      <MenuItem key="logout" onClick={logout} leftIcon={<FontIcon color={indigo500} className='material-icons'>power_settings_new</FontIcon>}>Logout</MenuItem>
+      <ListItem primaryText="Home" href="/home" value="/home" />,
+      <SelectableList
+        value="main"
+      >
+        <ListItem
+          primaryText="Appointment"
+          primaryTogglesNestedList={true}
+          nestedItems={[
+            <ListItem primaryText="Search Appointment" href="/search-appointment" value="/search-appointment" />,
+            <ListItem primaryText="Create Appointment" href="/create-appointment" value="/create-appointment" />,
+            <ListItem primaryText="Create Appointment Patient" href="/create-appointment-patient" value="/create-appointment-patient" />
+          ]}
+        />
+        <ListItem
+          primaryText="Patient Profiling"
+          primaryTogglesNestedList={true}
+          nestedItems={[
+            <ListItem primaryText="Create Patient Profile" href="/search-patient" value="/search-patient" />,
+            <ListItem primaryText="Search Patient Profile" href="/create-patient" value="/create-patient" />
+          ]}
+        />
+      </SelectableList>,
+      <ListItem primaryText="Logout" href="/logout" value="/logout" />,
     ];
   }
 
@@ -74,7 +91,6 @@ class Layout extends React.Component {
 
 Layout.propTypes = {
   children: PropTypes.node,
-  logout: PropTypes.func,
   userInfo: PropTypes.object
 };
 

@@ -9,13 +9,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import configureStore from './store';
 import getRoutes from './routes';
-import './index.css';
 import 'sanitize.css';
-import 'flexboxgrid/css/flexboxgrid.css';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
+
+// Import CSS reset and Global Styles
+import './global-styles';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 

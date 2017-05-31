@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { push } from 'react-router-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { auth as authActions } from '../../actions'
-import { LoginLayout } from '../../components/Layout';
+import { auth as authActions } from 'actions'
+import { LoginLayout } from 'components/Layout';
 import LoginForm from './LoginForm';
 
 const customContentStyle = {
