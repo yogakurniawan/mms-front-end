@@ -9,10 +9,6 @@ import { loadItem } from 'utils/localStorage';
 import { Layout } from 'components/Layout';
 
 class Main extends React.Component {
-  componentDidMount() {
-    this.props.getAllEmployees();
-  }
-
   handleSubmit = (evt, values) => {
     evt.preventDefault();
     console.log(values);
@@ -24,9 +20,10 @@ class Main extends React.Component {
   }
 
   render() {
-    const userInfo = loadItem('userInfo')
+    const { patients } = this.props;
+    const userInfo = loadItem('userInfo');
+    console.log(patients);
     const layoutProps = {
-      logout: this.handleLogout,
       userInfo
     };
     return (
@@ -50,7 +47,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state) => ({
-  employeeList: state.employee.employeeList
+  patients: state.patient.patients
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

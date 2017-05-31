@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
 import globalReducer from './global';
-import employee from './employee';
+import patient from './patient';
 import auth from './auth';
 
 const routeInitialState = {
@@ -26,6 +26,6 @@ export default combineReducers({
   route: routeReducer,
   global: globalReducer,
   form: formReducer,
-  employee,
+  patient,
   auth
 });

@@ -2,7 +2,7 @@ import {
   OPEN_NEW_EMPLOYEE_DIALOG,
   CLOSE_NEW_EMPLOYEE_DIALOG,
   RESET_FORM
-} from '../constants'
+} from 'constants'
 
 const initialState = {
   newEmployeeDialogOpen: false,
