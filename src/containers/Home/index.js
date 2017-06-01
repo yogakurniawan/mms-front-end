@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 import {
   auth as authActions,
-} from 'actions'
+} from 'actions';
 import { loadItem } from 'utils/localStorage';
 import { Layout } from 'components/Layout';
+import PatientCard from 'components/PatientCard';
 
-class Main extends React.Component {
+class Main extends Component {
   handleSubmit = (evt, values) => {
     evt.preventDefault();
     console.log(values);
@@ -29,8 +30,17 @@ class Main extends React.Component {
     return (
       <Layout className="Main" {...layoutProps}>
         <Row>
-          <Col xs={12} style={{ paddingRight: 0 }}>
-            <p>Hello World!!</p>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <PatientCard />
+          </Col>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <PatientCard />
+          </Col>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <PatientCard />
+          </Col>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <PatientCard />
           </Col>
         </Row>
       </Layout>

@@ -81,7 +81,7 @@ class Layout extends React.Component {
           />
           {this.renderNavMenu()}
         </Drawer>
-        <Grid fluid id="Layout" className="Layout" style={{ paddingRight: '1rem', paddingLeft: 0 }}>
+        <Grid fluid id="Layout" className="Layout">
           {children}
         </Grid>
       </div>
