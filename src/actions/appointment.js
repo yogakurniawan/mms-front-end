@@ -60,32 +60,25 @@ const loadAppointmentError = (error) => {
   }
 };
 
-const setAppointmentFilter = (payload) => {
-  return {
-    type: SET_APPOINTMENT_FILTER,
-    payload
-  }
-};
-
-const test = (payload) => {
-  setAppointmentFilter()
-  requestGetAllAppointment()
-}
-
-const requestGetAllAppointment = (filter) => {
+const requestGetAllAppointment = (filters) => {
   return (dispatch) => {
     dispatch(loadAppointment());
-    console.log("filter ->" + filter);
-
-    setTimeout(function(){
-        dispatch(loadAppointmentSuccess(dummyAppointments));
-        Promise.resolve();
-    }, 3000);
-    return Promise 
+    setTimeout(function () {
+      let filteredAppointments;
+      if (filters) {
+        filteredAppointments = dummyAppointments.filter((item) => {
+          return (`${item.patient.firstName} ${item.patient.lastName}`).includes(filters.patientName) ||
+                  item.mrNo.toString().includes(filters.mrNo) ||
+                  item.status.includes(filters.status);
+        });
+      }
+      dispatch(loadAppointmentSuccess(filteredAppointments && filteredAppointments.length > 0 ? filteredAppointments : dummyAppointments));
+      Promise.resolve();
+    }, 1000);
+    return Promise
   };
 };
 
 export default {
-  requestGetAllAppointment,
-  setAppointmentFilter
+  requestGetAllAppointment
 }

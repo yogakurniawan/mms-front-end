@@ -27,13 +27,8 @@ class Main extends React.Component {
 
   render() {
     const { patients } = this.props;
-    const userInfo = loadItem('userInfo');
-    console.log(patients);
-    const layoutProps = {
-      userInfo
-    };
     return (
-      <Layout className="Main" {...layoutProps}>
+      <Layout className="Main">
         <Row>
           <Col xs={12} sm={6} md={6} lg={6}>
             <PatientCard />

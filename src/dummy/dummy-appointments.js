@@ -4002,8 +4002,20 @@ export const dummyAppointments = [
 ]
 
 export const dummyAppointmentFields = [
-  {lookupText: 'Patient Name', lookupValue:'patientName'},
-  {lookupText: 'MR No.', lookupValue:'mrNo'},
-  {lookupText: 'Status', lookupValue:'status'},
-  {lookupText: 'Search', lookupValue:'search'}
+  {
+    lookupText: 'Patient Name',
+    lookupValue: 'patientName'
+  },
+  {
+    lookupText: 'MR No.',
+    lookupValue: 'mrNo'
+  },
+  {
+    lookupText: 'Status',
+    lookupValue: 'status'
+  },
+  {
+    lookupText: 'Search',
+    lookupValue: 'search'
+  }
 ]

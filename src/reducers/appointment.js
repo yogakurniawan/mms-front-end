@@ -6,7 +6,7 @@ import {
   ADD_APPOINTMENT_SUCCESS,
   ADD_APPOINTMENT_ERROR,
   SET_APPOINTMENT_FILTER
-} from '../constants'
+} from 'constants';
 
 const initialState = {
   addingNewAppointment: false,
@@ -15,22 +15,7 @@ const initialState = {
   loadingAppointment: false,
   loadAppointmentError: null,
   appointmentList: [],
-  appointmentFilter: [
-    { field: 'MrNo', value: ''},
-    { field: 'status', value: ''},
-    { field: 'search', value: ''},
-    { field: 'patientName', value: ''}
-  ]
 };
-
-const setFilter = (currentState, payload) => {
-    currentState.appointmentFilter.map((item)=>{
-        if(item.field === payload.field){
-          item.value = payload.value;
-        }
-    })
-    return currentState;
-}
 
 const reducer = (state = initialState, action) => {
   const { payload, error, id } = action;
@@ -72,11 +57,6 @@ const reducer = (state = initialState, action) => {
         addingNewAppointment: false,
         addedAppointment: null,
         addNewAppointmentError: error
-      };
-    case SET_APPOINTMENT_FILTER:
-      return {
-        ...state,
-        appointmentFilter: setFilter(state, payload)
       };
     default:
       return state;
