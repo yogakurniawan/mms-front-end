@@ -8,8 +8,13 @@ import {
 import { loadItem } from 'utils/localStorage';
 import { Layout } from 'components/Layout';
 import PatientCard from 'components/PatientCard';
+import SearchAppointment from 'containers/Appointment/SearchAppointment';
 
-class Main extends Component {
+class Main extends React.Component {
+  componentDidMount() {
+    this.props.getAllEmployees();
+  }
+
   handleSubmit = (evt, values) => {
     evt.preventDefault();
     console.log(values);

@@ -25,6 +25,7 @@
     "styled-components": "^2.0.0"
   },
   "devDependencies": {
+    "moment": "^2.18.1",
     "react-scripts": "0.9.5"
   },
   "scripts": {

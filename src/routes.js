@@ -3,6 +3,7 @@ import React from 'react';
 import { IndexRedirect, Route } from 'react-router';
 import App from './containers/App';
 import Login from './containers/Login';
+import SearchAppointment from 'containers/Appointment/SearchAppointment';
 import Home from './containers/Home';
 import NotFound from './components/NotFound';
 
@@ -36,7 +37,7 @@ export default () => {
       <Route>
         <Route path="home" component={Home} />
         <Route path="create-appointment" component={Home} />
-        <Route path="search-appointment" component={Home} />
+        <Route path="search-appointment" component={SearchAppointment} />
         <Route path="create-appointment-patient" component={Home} />
         <Route path="create-patient" component={Home} />
         <Route path="search-patient" component={Home} />
