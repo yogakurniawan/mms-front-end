@@ -46,7 +46,6 @@ const loadAppointment = () => {
 };
 
 const loadAppointmentSuccess = (payload) => {
-  console.log(payload);
   return {
     type: LOAD_APPOINTMENT_SUCCESS,
     payload

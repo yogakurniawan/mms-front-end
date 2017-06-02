@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-flexbox-grid'
 import PropTypes from 'prop-types';
 import { Layout } from 'components/Layout';
+import { loadItem } from 'utils/localStorage';
 import AppointmentListComponent from 'components/Appointment/appointment-list.component';
 import SearchBarComponent from 'components/Common/search-bar.component';
 import { dummyAppointmentFields } from 'dummy/dummy-appointments';
@@ -26,8 +27,12 @@ class SearchAppointment extends React.Component {
   }
 
   render() {
+    const userInfo = loadItem('userInfo');
+    const layoutProps = {
+      userInfo
+    };
     return (
-      <Layout className="Main">
+      <Layout className="Main" {...layoutProps}>
         <Row>
           <Col xs={12}>
             <SearchBarComponent fields={dummyAppointmentFields} onSearchBarChange={this.onChange} />
