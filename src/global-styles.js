@@ -11,4 +11,6 @@ injectGlobal`
   body {
     font-family: 'Roboto', sans-serif
   }
+
+  a { color: inherit; }
 `;

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import {
   FontIcon,
   IconButton,
@@ -36,9 +37,17 @@ class Layout extends React.Component {
     );
   }
 
+  renderLink(text, to) {
+    return (
+      <Link to={to} style={{ textDecoration: 'none' }}>
+        {text}
+      </Link>
+    );
+  }
+
   renderNavMenu() {
     return [
-      <ListItem primaryText="Home" href="/home" value="/home" />,
+      <ListItem primaryText={this.renderLink("Home", "home")} value="/home" />,
       <SelectableList
         value="main"
       >
@@ -46,17 +55,17 @@ class Layout extends React.Component {
           primaryText="Appointment"
           primaryTogglesNestedList={true}
           nestedItems={[
-            <ListItem primaryText="Search Appointment" href="/search-appointment" value="/search-appointment" />,
-            <ListItem primaryText="Create Appointment" href="/create-appointment" value="/create-appointment" />,
-            <ListItem primaryText="Create Appointment Patient" href="/create-appointment-patient" value="/create-appointment-patient" />
+            <ListItem primaryText={this.renderLink("Search Appointment", "search-appointment")} value="/search-appointment" />,
+            <ListItem primaryText={this.renderLink("Create Appointment", "create-appointment")} value="/create-appointment" />,
+            <ListItem primaryText={this.renderLink("Create Appointment Patient", "create-appointment-patient")} value="/create-appointment-patient" />
           ]}
         />
         <ListItem
           primaryText="Patient Profiling"
           primaryTogglesNestedList={true}
           nestedItems={[
-            <ListItem primaryText="Create Patient Profile" href="/search-patient" value="/search-patient" />,
-            <ListItem primaryText="Search Patient Profile" href="/create-patient" value="/create-patient" />
+            <ListItem primaryText={this.renderLink("Search Patient", "search-patient")} value="/search-patient" />,
+            <ListItem primaryText={this.renderLink("Create Patient", "create-patient")} value="/create-patient" />
           ]}
         />
       </SelectableList>,
