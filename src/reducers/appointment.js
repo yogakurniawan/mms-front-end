@@ -5,7 +5,10 @@ import {
   ADD_APPOINTMENT,
   ADD_APPOINTMENT_SUCCESS,
   ADD_APPOINTMENT_ERROR,
-  SET_APPOINTMENT_FILTER
+  SET_APPOINTMENT_PAGE,
+  LOAD_MORE_APPOINTMENT,
+  LOAD_MORE_APPOINTMENT_SUCCESS,
+  LOAD_MORE_APPOINTMENT_ERROR
 } from 'constants';
 
 const initialState = {
@@ -14,7 +17,11 @@ const initialState = {
   addedAppointment: null,
   loadingAppointment: false,
   loadAppointmentError: null,
+  loadingMoreAppointment: false,
+  loadingMoreAppointmentError: false,
+  totalAppointments: 0,
   appointmentList: [],
+  appointmentPagination:{ pageNumber: 1, pageSize: 10}
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +46,25 @@ const reducer = (state = initialState, action) => {
         appointmentList: null,
         loadAppointmentError: error
       };
+    case LOAD_MORE_APPOINTMENT:
+      return {
+        ...state,
+        loadingMoreAppointment: true
+      };
+    case LOAD_MORE_APPOINTMENT_SUCCESS:
+      return {
+        ...state,
+        loadingMoreAppointment: false,
+        loadingMoreAppointmentError: null,
+        appointmentList: [...state.appointmentList, ...payload]
+      };
+    case LOAD_MORE_APPOINTMENT_ERROR:
+      return {
+        ...state,
+        loadingMoreAppointment: false,
+        appointmentList: null,
+        loadingMoreAppointmentError: error
+      };
     case ADD_APPOINTMENT:
       return {
         ...state,
@@ -56,6 +82,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         addingNewAppointment: false,
         addedAppointment: null,
+        addNewAppointmentError: error
+      };
+    case SET_APPOINTMENT_PAGE:
+      return {
+        ...state,
+        addingNewAppointment: false,
+        appointmentPagination: payload,
         addNewAppointmentError: error
       };
     default:
