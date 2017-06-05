@@ -10,8 +10,8 @@ import ProfilePicture from 'material-ui/svg-icons/action/account-circle'
 import { Col, Row, Visible } from 'react-flexbox-grid'
 
 //other components
-import Appointment from './appointment-list-item.component';
-import './appointment-list-item.component.css';
+import Appointment from './AppointmentListItemComponent';
+import './AppointmentListItemComponent.css';
 
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 const AppointmentListItemComponent = (props) => (

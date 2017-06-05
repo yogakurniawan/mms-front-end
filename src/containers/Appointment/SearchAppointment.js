@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 import { Layout } from 'components/Layout';
 import { loadItem } from 'utils/localStorage';
 import AppointmentListComponent from 'components/Appointment/appointment-list.component';
-import SearchBarComponent from 'components/Common/search-bar.component';
+import SearchBarComponent from 'components/Common/SearchBarComponent';
+import PaginationComponent from 'components/Common/PaginationComponent';
 import { dummyAppointmentFields } from 'dummy/dummy-appointments';
 import {
   appointment as appointmentsActions
@@ -47,7 +48,7 @@ class SearchAppointment extends React.Component {
             <SearchBarComponent fields={dummyAppointmentFields} onSearchBarChange={this.onChange} />
           </Col>
           <Col xs={12}>
-
+            <PaginationComponent pagination={this.props.pagination} />
           </Col>
           <Col xs={12} >
             <AppointmentListComponent appointments={this.props.appointments} />

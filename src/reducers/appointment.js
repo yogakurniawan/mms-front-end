@@ -8,7 +8,8 @@ import {
   SET_APPOINTMENT_PAGE,
   LOAD_MORE_APPOINTMENT,
   LOAD_MORE_APPOINTMENT_SUCCESS,
-  LOAD_MORE_APPOINTMENT_ERROR
+  LOAD_MORE_APPOINTMENT_ERROR,
+  SET_TOTAL_APPOINTMENT
 } from 'constants';
 
 const initialState = {
@@ -19,9 +20,8 @@ const initialState = {
   loadAppointmentError: null,
   loadingMoreAppointment: false,
   loadingMoreAppointmentError: false,
-  totalAppointments: 0,
   appointmentList: [],
-  appointmentPagination:{ pageNumber: 1, pageSize: 10}
+  appointmentPagination:{ pageNumber: 1, pageSize: 10, total: 0, pageStart: 0, pageEnd: 0}
 };
 
 const reducer = (state = initialState, action) => {

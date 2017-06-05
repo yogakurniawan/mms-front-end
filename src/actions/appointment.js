@@ -14,7 +14,8 @@ import {
   SET_APPOINTMENT_FILTER,
   LOAD_MORE_APPOINTMENT,
   LOAD_MORE_APPOINTMENT_SUCCESS,
-  LOAD_MORE_APPOINTMENT_ERROR
+  LOAD_MORE_APPOINTMENT_ERROR,
+  SET_APPOINTMENT_PAGE
 } from '../constants';
 import { generate as generateGuid } from '../utils/uuid';
 import { dummyAppointments } from '../dummy/dummy-appointments'
@@ -84,6 +85,13 @@ const loadMoreAppointmentError = (payload) => {
   }
 };
 
+const setPagination = (payload) => {
+  return {
+    type: SET_APPOINTMENT_PAGE,
+    payload
+  }
+};
+
 
 const requestGetAllAppointment = (paging, filters) => {
   return (dispatch) => {
@@ -92,10 +100,11 @@ const requestGetAllAppointment = (paging, filters) => {
       let filteredAppointments;
       if (filters) {
         filteredAppointments = dummyAppointments.filter((item) => {
-          return ((`${item.patient.firstName} ${item.patient.lastName}`).toLowerCase()).includes((filters.patientName && filters.patientName.toLowerCase()));
+          const patientName = filters.patientName && filters.patientName.toLowerCase();
+          return ((`${item.patient.firstName} ${item.patient.lastName}`).toLowerCase()).includes(patientName);
         });
       }
-      dispatch(loadAppointmentSuccess(filteredAppointments && filteredAppointments.length > 0 ? doPaging(filteredAppointments, paging) : doPaging(dummyAppointments, paging)));
+      dispatch(loadAppointmentSuccess(filteredAppointments && filteredAppointments.length > 0 ? doPaging(filteredAppointments, paging, dispatch) : doPaging(dummyAppointments, paging, dispatch)));
       Promise.resolve();
     }, 1000);
     return Promise
@@ -109,18 +118,19 @@ const loadMore = (paging, filters) => {
       let filteredAppointments;
       if (filters) {
         filteredAppointments = dummyAppointments.filter((item) => {
-          return ((`${item.patient.firstName} ${item.patient.lastName}`).toLowerCase()).includes((filters.patientName && filters.patientName.toLowerCase()));
+          const patientName = filters.patientName && filters.patientName.toLowerCase();
+          return ((`${item.patient.firstName} ${item.patient.lastName}`).toLowerCase()).includes(patientName);
         });
       }
-      dispatch(loadMoreAppointmentSuccess(filteredAppointments && filteredAppointments.length > 0 ? doPaging(filteredAppointments, paging) : doPaging(dummyAppointments, paging)));
+      
+      dispatch(loadMoreAppointmentSuccess(filteredAppointments && filteredAppointments.length > 0 ? doPaging(filteredAppointments, paging, dispatch) : doPaging(dummyAppointments, paging, dispatch)));
       Promise.resolve();
     }, 1000);
     return Promise
   };
 };
 
-const doPaging = (appoinmentList, paging) => {
-  debugger;
+const doPaging = (appoinmentList, paging, dispatch) => {
     let pageNumber = 0 ;
     let start = 0
     let end = 0
@@ -128,6 +138,9 @@ const doPaging = (appoinmentList, paging) => {
     pageNumber = paging.pageNumber - 1;
     start = pageNumber  * paging.pageSize
     end = ((pageNumber + 1) * paging.pageSize) > appoinmentList.length ? appoinmentList.length : ((pageNumber + 1) * paging.pageSize);
+
+    let total = 0;
+    dispatch(setPagination({pageNumber: paging.pageNumber, pageSize: paging.pageSize, total: appoinmentList.length, pageStart: 1, pageEnd: end}));
 
     return appoinmentList.slice(start, end);
 }

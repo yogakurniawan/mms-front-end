@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Row } from 'react-flexbox-grid'
 
 //other components
-import Appointment from './appointment-list-item.component';
+import Appointment from './AppointmentListItemComponent';
 
 const AppointmentListComponent = (props) => (
     <Row>
