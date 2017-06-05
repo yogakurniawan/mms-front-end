@@ -4,7 +4,7 @@ import { Row, Col } from 'react-flexbox-grid'
 import PropTypes from 'prop-types';
 import { Layout } from 'components/Layout';
 import { loadItem } from 'utils/localStorage';
-import AppointmentListComponent from 'components/Appointment/appointment-list.component';
+import AppointmentListComponent from 'components/Appointment/AppointmentListComponent';
 import SearchBarComponent from 'components/Common/SearchBarComponent';
 import PaginationComponent from 'components/Common/PaginationComponent';
 import { dummyAppointmentFields } from 'dummy/dummy-appointments';
