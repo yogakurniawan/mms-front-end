@@ -4,6 +4,7 @@ import { IndexRedirect, Route } from 'react-router';
 import App from './containers/App';
 import Login from './containers/Login';
 import SearchAppointment from 'containers/Appointment/SearchAppointment';
+import SearchPatient from 'containers/Patient/SearchPatient';
 import Home from './containers/Home';
 import NotFound from './components/NotFound';
 
@@ -40,7 +41,7 @@ export default () => {
         <Route path="search-appointment" component={SearchAppointment} />
         <Route path="create-appointment-patient" component={Home} />
         <Route path="create-patient" component={Home} />
-        <Route path="search-patient" component={Home} />
+        <Route path="search-patient" component={SearchPatient} />
       </Route>
       <Route path="*" component={NotFound} status={404} />
     </Route>

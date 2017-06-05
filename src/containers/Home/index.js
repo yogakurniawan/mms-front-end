@@ -7,7 +7,6 @@ import {
 } from 'actions';
 import { loadItem } from 'utils/localStorage';
 import { Layout } from 'components/Layout';
-import PatientCard from 'components/PatientCard';
 import SearchAppointment from 'containers/Appointment/SearchAppointment';
 
 class Main extends React.Component {
@@ -28,19 +27,10 @@ class Main extends React.Component {
   render() {
     const { patients } = this.props;
     return (
-      <Layout className="Main">
+      <Layout>
         <Row>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            <PatientCard />
-          </Col>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            <PatientCard />
-          </Col>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            <PatientCard />
-          </Col>
-          <Col xs={12} sm={6} md={6} lg={6}>
-            <PatientCard />
+          <Col xs={12}>
+            Hello World
           </Col>
         </Row>
       </Layout>
