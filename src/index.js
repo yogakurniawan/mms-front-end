@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -10,20 +9,24 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import configureStore from './store';
 import getRoutes from './routes';
 import 'sanitize.css';
+import './global-styles';
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
-
-// Import CSS reset and Global Styles
-import './global-styles';
-
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+try {
+  injectTapEventPlugin();
+} catch (e) {
+  // do nothing
+}
 
 const muiTheme = getMuiTheme({
   userAgent: 'all',
+  fontFamily: 'Roboto, sans-serif',
+  tabs: {
+    backgroundColor: 'transparent'
+  },
   palette: {
-    primary1Color: '#6200c0'
+    primary1Color: 'rgb(0, 130, 203)'
   }
 });
 
@@ -46,8 +49,8 @@ const makeSelectLocationState = () => {
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const store = configureStore(initialState, browserHistory);
-const history = syncHistoryWithStore(browserHistory, store, {
+const store = configureStore(initialState, hashHistory);
+const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState: makeSelectLocationState(),
 });
 

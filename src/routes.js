@@ -1,11 +1,11 @@
 import React from 'react';
 // import Cookie from 'js-cookie';
 import { IndexRedirect, Route } from 'react-router';
-import App from './containers/App';
+import Layout from './containers/Layout';
 import Login from './containers/Login';
-import SearchAppointment from 'containers/Appointment/SearchAppointment';
 import SearchPatient from 'containers/Patient/SearchPatient';
 import Home from './containers/Home';
+import { EditPatient, CreatePatient } from 'containers/Patient';
 import NotFound from './components/NotFound';
 
 export default () => {
@@ -29,19 +29,19 @@ export default () => {
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/" component={App}>
+    <Route path="/">
       <IndexRedirect to="home" />
       <Route>
         <Route path="login" component={Login} />
       </Route>
 
-      <Route>
+      <Route component={Layout}>
         <Route path="home" component={Home} />
-        <Route path="create-appointment" component={Home} />
-        <Route path="search-appointment" component={SearchAppointment} />
-        <Route path="create-appointment-patient" component={Home} />
-        <Route path="create-patient" component={Home} />
-        <Route path="search-patient" component={SearchPatient} />
+        <Route path="patient">
+          <Route path="create" component={EditPatient} />
+          <Route path="edit" component={CreatePatient} />
+          <Route path="search" component={SearchPatient} />
+        </Route>
       </Route>
       <Route path="*" component={NotFound} status={404} />
     </Route>

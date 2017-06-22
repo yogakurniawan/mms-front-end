@@ -1,4 +1,4 @@
-import axios from 'axios';
+import 'whatwg-fetch';
 import Cookie from 'js-cookie';
 import moment from 'moment';
 import qs from 'qs';
@@ -10,13 +10,13 @@ import {
   LOAD_USER,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
-  BASE_URL,
+  BASE_API_URL,
   LOGOUT,
   LOGOUT_SUCCESS
-} from '../constants';
+} from 'constants';
 
-const LOGIN_URL = `${BASE_URL}/oauth/token`;
-const GET_USER_LOGIN_URL = `${BASE_URL}/api/employee/get-login-user`;
+const LOGIN_URL = `${BASE_API_URL}/oauth/token`;
+const GET_USER_LOGIN_URL = `${BASE_API_URL}/api/employee/get-login-user`;
 
 function loadUser() {
   return {
@@ -61,14 +61,13 @@ function loginFail(error) {
 const getLoggedInUserInfo = () => {
   const config = {
     method: 'GET',
-    url: GET_USER_LOGIN_URL,
     headers: {
       'Authorization': `Bearer ${Cookie.get('token')}`
     }
   }
   return (dispatch) => {
     dispatch(loadUser());
-    return axios(config).then(({ data }) => {
+    return fetch(GET_USER_LOGIN_URL, config).then(({ data }) => {
       if (data.error) {
         dispatch(loadUserFail(data));
       } else {
@@ -84,12 +83,11 @@ const getLoggedInUserInfo = () => {
 const login = (username, password) => {
   const config = {
     method: 'POST',
-    url: LOGIN_URL,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic Y2xpZW50OnNlY3JldA=='
     },
-    data: qs.stringify({
+    body: qs.stringify({
       grant_type: 'password',
       username,
       password
@@ -97,7 +95,7 @@ const login = (username, password) => {
   }
   return (dispatch) => {
     dispatch(doLogin());
-    return axios(config).then(({ data }) => {
+    return fetch(LOGIN_URL, config).then(({ data }) => {
       if (data.error) {
         dispatch(loginFail(data));
         return Promise.reject(data);
@@ -118,17 +116,16 @@ const login = (username, password) => {
 const refreshToken = (refresh_token) => {
   const config = {
     method: 'POST',
-    url: LOGIN_URL,
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
       'Authorization': 'Basic Y2xpZW50OnNlY3JldA=='
     },
-    data: qs.stringify({
+    body: qs.stringify({
       grant_type: 'refresh_token',
       refresh_token: Cookie.get('refresh_token')
     })
   }
-  return axios(config).then(({ data }) => {
+  return fetch(LOGIN_URL, config).then(({ data }) => {
     if (data.error) {
       console.log(data.error);
     } else {

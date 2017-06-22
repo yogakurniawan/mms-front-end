@@ -5,7 +5,6 @@ import { push } from 'react-router-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { auth as authActions } from 'actions'
-import { LoginLayout } from 'components/Layout';
 import LoginForm from './LoginForm';
 
 const customContentStyle = {
@@ -41,7 +40,7 @@ class Login extends React.Component {
     ];
     
     return (
-      <LoginLayout>
+      <div>
         <Dialog
           actions={actions}
           modal={false}
@@ -52,7 +51,7 @@ class Login extends React.Component {
           Wrong username or password
         </Dialog>
         <LoginForm onSubmit={this.handleSubmit} />
-      </LoginLayout>
+      </div>
     );
   }
 }

@@ -4,7 +4,6 @@ import { reducer as formReducer } from 'redux-form';
 import globalReducer from './global';
 import patient from './patient';
 import auth from './auth';
-import appointment from './appointment';
 
 const routeInitialState = {
   locationBeforeTransitions: null,
@@ -28,6 +27,5 @@ export default combineReducers({
   global: globalReducer,
   form: formReducer,
   patient,
-  appointment,
   auth
 });

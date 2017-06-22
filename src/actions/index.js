@@ -1,11 +1,9 @@
-import employee from './employee';
-import appointment from './appointment'
+import patient from './patient';
 import auth from './auth';
 import global from './global';
 
 export {
-  employee,
+  patient,
   auth,
-  global,
-  appointment
+  global
 };

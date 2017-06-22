@@ -1,30 +1,37 @@
 import {
   OPEN_NEW_EMPLOYEE_DIALOG,
   CLOSE_NEW_EMPLOYEE_DIALOG,
-  RESET_FORM
-} from '../constants';
+  RESET_FORM,
+  SET_PAGE_TITLE,
+  TOGGLE_SHOW_SNACKBAR
+} from 'constants';
 
-const openNewEmployeeDialog = () => {
-  return {
-    type: OPEN_NEW_EMPLOYEE_DIALOG
-  }
-};
+const openNewEmployeeDialog = () => ({
+  type: OPEN_NEW_EMPLOYEE_DIALOG
+});
 
-const closeNewEmployeeDialog = () => {
-  return {
-    type: CLOSE_NEW_EMPLOYEE_DIALOG
-  }
-};
+const setPageTitle = payload => ({
+  type: SET_PAGE_TITLE,
+  payload
+});
 
-const resetForm = () => {
-  return {
-    type: RESET_FORM
-  }
-};
+const closeNewEmployeeDialog = () => ({
+  type: CLOSE_NEW_EMPLOYEE_DIALOG
+});
 
+const resetForm = () => ({
+  type: RESET_FORM
+});
+
+const toggleShowSnackBar = (payload) => ({
+  type: TOGGLE_SHOW_SNACKBAR,
+  payload
+});
 
 export default {
   openNewEmployeeDialog,
   closeNewEmployeeDialog,
-  resetForm
-}
+  resetForm,
+  setPageTitle,
+  toggleShowSnackBar
+};

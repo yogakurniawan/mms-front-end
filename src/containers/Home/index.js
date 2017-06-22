@@ -4,19 +4,17 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'react-flexbox-grid';
 import {
   auth as authActions,
+  global as globalActions
 } from 'actions';
-import { loadItem } from 'utils/localStorage';
-import { Layout } from 'components/Layout';
-import SearchAppointment from 'containers/Appointment/SearchAppointment';
 
-class Main extends React.Component {
+class Main extends Component {
   componentDidMount() {
-    this.props.getAllEmployees();
+    const { setPageTitle } = this.props;
+    setPageTitle("Home");
   }
 
   handleSubmit = (evt, values) => {
     evt.preventDefault();
-    console.log(values);
   }
 
   handleLogout = () => {
@@ -25,25 +23,23 @@ class Main extends React.Component {
   }
 
   render() {
-    const { patients } = this.props;
     return (
-      <Layout>
-        <Row>
-          <Col xs={12}>
-            Hello World
-          </Col>
-        </Row>
-      </Layout>
+      <Row>
+        <Col xs={12}>
+        </Col>
+      </Row>
     );
   }
 }
 
 Main.propTypes = {
   logout: PropTypes.func,
+  setPageTitle: PropTypes.func
 };
 
 const mapDispatchToProps = {
   logout: authActions.logout,
+  setPageTitle: globalActions.setPageTitle
 };
 
 const mapStateToProps = (state) => ({
