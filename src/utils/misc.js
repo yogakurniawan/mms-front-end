@@ -8,13 +8,21 @@ export const getValue = (lookups, text) => {
   return null;
 }
 
-export const getPhoneNumber = (list, type) => {
-  if (list.length) {
-    const phoneNumber = list.find((result) => result.type === type);
-    return phoneNumber;
+export const checkNull = (valueToCheck, defaultValue = "") => {
+  if (valueToCheck === undefined || valueToCheck === null) {
+    return defaultValue;
   }
-  return {
+  return valueToCheck;
+}
+
+export const getPhoneNumber = (list, type) => {
+  const defaultValue = {
     number: "",
     ext: ""
   };
+  if (list.length) {
+    const phoneNumber = list.find((result) => result.type === type);
+    return checkNull(phoneNumber, defaultValue);
+  }
+  return defaultValue;
 }

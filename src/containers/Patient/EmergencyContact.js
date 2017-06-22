@@ -6,7 +6,7 @@ import { default as EmergencyContactComponent } from 'components/PatientForm/Eme
 import {
   titles
 } from 'dummy/lookups';
-import { getValue, getPhoneNumber } from 'utils/misc';
+import { getValue, getPhoneNumber, checkNull } from 'utils/misc';
 
 class EmergencyContact extends Component {
 
@@ -49,10 +49,10 @@ class EmergencyContact extends Component {
         postCode,
         email,
         state,
-        homePhone: getPhoneNumber(phoneNumbers, "HOME").number,
-        mobilePhone: getPhoneNumber(phoneNumbers, "MOBILE").number,
-        officePhone: getPhoneNumber(phoneNumbers, "OFFICE").number,
-        extNo: getPhoneNumber(phoneNumbers, "OFFICE").ext
+        homePhone: checkNull(getPhoneNumber(phoneNumbers, "HOME").number),
+        mobilePhone: checkNull(getPhoneNumber(phoneNumbers, "MOBILE").number),
+        officePhone: checkNull(getPhoneNumber(phoneNumbers, "OFFICE").number),
+        extNo: checkNull(getPhoneNumber(phoneNumbers, "OFFICE").ext)
       });
     }
   }

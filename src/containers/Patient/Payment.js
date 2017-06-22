@@ -4,6 +4,7 @@ import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { numberValidation } from 'utils/validation';
 import { default as PaymentComponent } from 'components/PatientForm/Payment';
+import { checkNull } from 'utils/misc';
 
 class Payment extends Component {
 
@@ -24,8 +25,11 @@ class Payment extends Component {
     if (patient && patient.paymentInfo) {
       initialize({
         ...patient.paymentInfo,
-        eligibilityDate: new Date(patient.paymentInfo.eligibilityDate),
-        verificationDate: new Date(patient.paymentInfo.verificationDate)
+        maxCoverage: checkNull(patient.paymentInfo.maxCoverage, 0),
+        maxCoverageBalance: checkNull(patient.paymentInfo.maxCoverageBalance, 0),
+        coverageBalance: checkNull(patient.paymentInfo.coverageBalance, 0),
+        eligibilityDate: new Date(checkNull(patient.paymentInfo.eligibilityDate, null)),
+        verificationDate: new Date(checkNull(patient.paymentInfo.verificationDate, null))
       });
     }
   }

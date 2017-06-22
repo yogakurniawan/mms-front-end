@@ -18,8 +18,9 @@ import SearchBar from './SearchBar';
 class SearchPatient extends Component {
 
   componentDidMount() {
-    const { setPageTitle, getPatients, currentPage } = this.props;
+    const { setPageTitle, setPatientPage, getPatients, currentPage } = this.props;
     setPageTitle("Search Patient");
+    setPatientPage(0);
     getPatients(currentPage);
   }
 

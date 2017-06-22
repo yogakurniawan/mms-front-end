@@ -201,7 +201,7 @@ const getPatientsByKeyword = (page, keyword) => {
   return (dispatch) => {
     dispatch(loadPatients());
     dispatch(setPatientPage(page));
-    let query = `lastName==*${keyword}*,firstName==*${keyword}*,pob==*${keyword}*,religion==*${keyword}*,nationality==*${keyword}*,email==*${keyword}*`;
+    let query = `occupation==*${keyword}*,lastName==*${keyword}*,firstName==*${keyword}*,pob==*${keyword}*,religion==*${keyword}*,nationality==*${keyword}*,email==*${keyword}*`;
 
     const queryParams = {
       q: query,
@@ -309,9 +309,16 @@ const updatePatientDetail = (isUpdate, { id, patient, patientAddress, emergencyC
         );
       }
 
-      request.push(
+      paymentInfo.link.insurancePaymentInfo && request.push(
         put({
           url: paymentInfo.link.insurancePaymentInfo.href,
+          data: paymentInfo
+        })
+      );
+
+      paymentInfo.link.paymentInfo && request.push(
+        put({
+          url: paymentInfo.link.paymentInfo.href,
           data: paymentInfo
         })
       );

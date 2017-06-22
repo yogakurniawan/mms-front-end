@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import { renderTextField } from 'components/Form';
-import { Col } from 'react-flexbox-grid';
+import { Col, Grid } from 'react-flexbox-grid';
 import SelectField from 'components/Form/SelectField';
 import { tenants } from 'dummy/lookups';
 import ContentBox from './ContentBox';
@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
     render() {
         const { onSubmit, pristine } = this.props;
         return (
-            <div>
+            <Grid>
                 <LogoWrapper center="xs">
                     <Col xs="12">
                         <img alt="MMS Logo" src={Logo} />
@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
                         </ContentBox>
                     </Col>
                 </ContainerBox>
-            </div>
+            </Grid>
         );
     }
 }

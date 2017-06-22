@@ -36,9 +36,11 @@ class PatientManagement extends Component {
   reset() {
     const { setTabValue, disableTab } = this.props;
     setTabValue(0);
-    disableTab('emergencyContact', true);
-    disableTab('payment', true);
-    disableTab('supportingDocument', true);
+    if (!this.isModify()) {
+      disableTab('emergencyContact', true);
+      disableTab('payment', true);
+      disableTab('supportingDocument', true);
+    }
   }
 
   onStart() {
@@ -153,10 +155,21 @@ class PatientManagement extends Component {
       updatePatientDetail(this.isModify(), {
         id: location.query.id,
         patient: this.constructPatientDetail(patientDetailsValues),
-        patientAddress: { ...this.constructAddress(patientDetailsValues), link: patient && patient.address._links },
-        emergencyContact: emergencyContactValues && { ...this.constructEmergencyContact(emergencyContactValues), link: patient && patient.emergencyContact._links },
-        emergencyContactAddress: emergencyContactValues && { ...this.constructAddress(emergencyContactValues), link: patient && patient.emergencyContact && patient.emergencyContact.address && patient.emergencyContact.address._links },
-        paymentInfo: { ...paymentInfoValues, link: patient && patient.paymentInfo && patient.paymentInfo._links }
+        patientAddress: {
+          ...this.constructAddress(patientDetailsValues),
+          link: patient && patient.address._links
+        },
+        emergencyContact: emergencyContactValues && {
+          ...this.constructEmergencyContact(emergencyContactValues),
+          link: patient && patient.emergencyContact._links,
+          address: patient && patient.emergencyContact.address
+        },
+        emergencyContactAddress: emergencyContactValues && {
+          ...this.constructAddress(emergencyContactValues),
+        },
+        paymentInfo: {
+          ...paymentInfoValues, link: patient && patient.paymentInfo && patient.paymentInfo._links
+        }
       }).then(() => {
         push('patient/search');
         toggleShowSnackBar(`Patient ${patient.firstName} ${patient.lastName} has been modified`);

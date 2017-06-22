@@ -14,7 +14,7 @@ import {
   maritalStatuses,
   religions
 } from 'dummy/lookups';
-import { getValue, getPhoneNumber } from 'utils/misc';
+import { getValue, getPhoneNumber, checkNull } from 'utils/misc';
 
 class PatientDetails extends Component {
 
@@ -33,7 +33,7 @@ class PatientDetails extends Component {
     const { initialize, patient } = props;
     if (patient) {
       const {
-      firstName,
+        firstName,
         lastName,
         gender,
         allergy,
@@ -53,14 +53,14 @@ class PatientDetails extends Component {
         title,
         type,
         address: {
-        country,
+          country,
           city,
           line,
           postCode,
           state
-      },
+        },
         phoneNumbers
-    } = patient;
+      } = patient;
 
       initialize({
         firstName,
@@ -87,20 +87,16 @@ class PatientDetails extends Component {
         addressLine: line,
         postCode,
         state,
-        homePhone: getPhoneNumber(phoneNumbers, "HOME").number,
-        mobilePhone: getPhoneNumber(phoneNumbers, "MOBILE").number,
-        officePhone: getPhoneNumber(phoneNumbers, "OFFICE").number,
-        extNo: getPhoneNumber(phoneNumbers, "OFFICE").ext
+        homePhone: checkNull(getPhoneNumber(phoneNumbers, "HOME").number),
+        mobilePhone: checkNull(getPhoneNumber(phoneNumbers, "MOBILE").number),
+        officePhone: checkNull(getPhoneNumber(phoneNumbers, "OFFICE").number),
+        extNo: checkNull(getPhoneNumber(phoneNumbers, "OFFICE").ext)
       });
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    const {
-      valid,
-      disableTab,
-      dirty,
-    } = nextProps;
+    const { valid, disableTab, dirty } = nextProps;
     if (valid && dirty) {
       disableTab('emergencyContact', false);
       disableTab('payment', false);
