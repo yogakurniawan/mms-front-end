@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'react-flexbox-grid';
 import styled from 'styled-components';
-import { grey600, lightBlueA700 } from 'material-ui/styles/colors';
+import { grey600 } from 'material-ui/styles/colors';
 import { generate } from 'utils/uuid';
+import { checkNull } from 'utils/misc';
 
 const Text = styled.div`
   color: ${props => props.color};
@@ -22,8 +23,8 @@ const Detail = props => (
     {
       props.details && props.details.map((detail) =>
         <Div key={generate()} xs={12} sm={6} md={4} lg={4}>
-          <Text fontWeight="normal" color={lightBlueA700}>{detail.label}</Text>
-          <Text fontWeight="lighter" color={grey600}>{detail.value}</Text>
+          <Text fontWeight="normal" color="#6200C0">{detail.label}</Text>
+          <Text fontWeight="lighter" color={grey600}>{checkNull(detail.value, "-")}</Text>
         </Div>
       )
     }

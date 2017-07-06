@@ -23,10 +23,10 @@ import {
 
 const styles = {
   floatingLabelStyle: {
-    color: "rgb(0, 130, 203)",
+    color: "#6200C0",
   },
   underlineStyle: {
-    borderColor: "rgb(0, 130, 203)",
+    borderColor: "#6200C0",
   },
 };
 

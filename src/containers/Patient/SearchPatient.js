@@ -18,10 +18,10 @@ import SearchBar from './SearchBar';
 class SearchPatient extends Component {
 
   componentDidMount() {
-    const { setPageTitle, setPatientPage, getPatients, currentPage } = this.props;
+    const { setPageTitle, setPatientPage, getPatients } = this.props;
     setPageTitle("Search Patient");
     setPatientPage(0);
-    getPatients(currentPage);
+    getPatients(0);
   }
 
   closeSnackBar = () => {
@@ -70,13 +70,18 @@ class SearchPatient extends Component {
     push(`patient/edit?id=${patient.id}`);
   }
 
+  addPatient() {
+    const { push } = this.props;
+    push('patient/create');
+  }
+
   render() {
     const { patients, snackBarOpen, page, currentPage, loading, snackBarMessage } = this.props;
     return (
       <div>
         <Row center="xs">
           <Col xs={12} sm={12} md={12} lg={11}>
-            <SearchBar handleKeyPress={() => this.onSearch()} />
+            <SearchBar addPatient={() => this.addPatient()} handleKeyPress={() => this.onSearch()} />
           </Col>
           <Col xs={12} sm={12} md={12} lg={11}>
             {loading && <LoadingMask />}

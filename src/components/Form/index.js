@@ -33,7 +33,7 @@ export const renderSelectField = ({
 }) => (
     <SelectField
       dropDownMenuProps={{ animated: true }}
-      selectedMenuItemStyle={{ color: "rgb(0, 130, 203)" }}
+      selectedMenuItemStyle={{ color: "#6200C0" }}
       floatingLabelText={label}
       floatingLabelFixed={true}
       errorText={touched && error}

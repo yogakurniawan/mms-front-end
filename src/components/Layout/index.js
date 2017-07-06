@@ -48,6 +48,9 @@ class Layout extends React.Component {
 
   renderNavMenu() {
     const { location } = this.props;
+    const host = window.location.host;
+    const domain = host.substring(4);
+    const appointmentUrl = `http://app.${domain}/#/appointment/`;
     return [
       <ListItem key={generate()} onClick={() => this.handleToggleLeftNav()} containerElement={<Link to="/home" />} primaryText="Home" value="/home" /> ,
       <SelectableList
@@ -58,8 +61,8 @@ class Layout extends React.Component {
           primaryText="Appointment"
           primaryTogglesNestedList={true}
           nestedItems={[
-            <ListItem onClick={() => this.handleToggleLeftNav()} containerElement={<a href="#" />} primaryText="Search Appointment" value="/search-appointment" />,
-            <ListItem onClick={() => this.handleToggleLeftNav()} containerElement={<a href="#" />} primaryText="Create Appointment" value="/create-appointment" />,
+            <ListItem onClick={() => this.handleToggleLeftNav()} href={`${appointmentUrl}search`} primaryText="Search Appointment" value="/appointment/search" />,
+            <ListItem onClick={() => this.handleToggleLeftNav()} href={`${appointmentUrl}create`} primaryText="Create Appointment" value="/appointment/create" />,
             <ListItem onClick={() => this.handleToggleLeftNav()} containerElement={<a href="#" />} primaryText="Create Appointment Patient" value="/create-appointment-patient" />
           ]}
         />

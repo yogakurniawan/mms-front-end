@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CircularProgress from 'material-ui/CircularProgress';
+import Progress from './Progress';
 
 const Mask = styled.div`
   width: 100%;
@@ -11,14 +11,6 @@ const Mask = styled.div`
   position: absolute;
   opacity: 0.3;
   background-color: #fff;
-`;
-
-const Progress = styled(CircularProgress) `
-  top: 40vh;
-  z-index: 2;
-  width: 100%;
-  height: 100%;
-  position: absolute;
 `;
 
 const LoadingMask = () => (

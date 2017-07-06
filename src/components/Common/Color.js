@@ -1,1 +1,1 @@
-export const primary = 'rgb(0, 130, 203)';
+export const primary = '#6200C0';

@@ -6,7 +6,6 @@ import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
 import ChevronRight from 'material-ui/svg-icons/navigation/chevron-right';
 import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
 import withWidth from 'material-ui/utils/withWidth';
-import { cyan500 } from 'material-ui/styles/colors';
 import RefreshButton from 'components/Common/RefreshButton';
 
 const styles = {
@@ -110,13 +109,13 @@ class Pagination extends Component {
         <ToolbarGroup style={styles.mobileToolbar}>
           {page > 1 &&
             <IconButton onClick={this.prevPage}>
-              <ChevronLeft color={cyan500} />
+              <ChevronLeft color='#6200C0' />
             </IconButton>
           }
           <span style={styles.pageInfo}>{`${offsetBegin}-${offsetEnd} of ${total}`}</span>
           {page !== nbPages &&
             <IconButton onClick={this.nextPage}>
-              <ChevronRight color={cyan500} />
+              <ChevronRight color='#6200C0' />
             </IconButton>
           }
         </ToolbarGroup>

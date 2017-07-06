@@ -27,10 +27,14 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "enzyme": "^2.9.1",
     "fakerest": "^1.2.1",
     "fetch-mock": "^5.5.0",
     "moment": "^2.18.1",
-    "react-scripts": "0.9.5"
+    "react-addons-test-utils": "^15.6.0",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.6.1",
+    "redux-mock-store": "^1.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

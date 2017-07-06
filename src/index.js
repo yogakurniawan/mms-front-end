@@ -26,7 +26,7 @@ const muiTheme = getMuiTheme({
     backgroundColor: 'transparent'
   },
   palette: {
-    primary1Color: 'rgb(0, 130, 203)'
+    primary1Color: '#6200C0'
   }
 });
 

@@ -154,15 +154,15 @@ class PatientManagement extends Component {
     if (this.isModify()) {
       updatePatientDetail(this.isModify(), {
         id: location.query.id,
-        patient: this.constructPatientDetail(patientDetailsValues),
+        patient: {...this.constructPatientDetail(patientDetailsValues), link: patient._links.self.href},
         patientAddress: {
           ...this.constructAddress(patientDetailsValues),
           link: patient && patient.address._links
         },
         emergencyContact: emergencyContactValues && {
           ...this.constructEmergencyContact(emergencyContactValues),
-          link: patient && patient.emergencyContact._links,
-          address: patient && patient.emergencyContact.address
+          link: patient && patient.emergencyContact && patient.emergencyContact._links,
+          address: patient && patient.emergencyContact && patient.emergencyContact.address
         },
         emergencyContactAddress: emergencyContactValues && {
           ...this.constructAddress(emergencyContactValues),
@@ -184,9 +184,9 @@ class PatientManagement extends Component {
         },
         emergencyContact: emergencyContactValues && {
           ...this.constructEmergencyContact(emergencyContactValues),
-          link: patient && patient.emergencyContact._links
+          link: patient && patient.emergencyContact && patient.emergencyContact._links
         },
-        emergencyContactAddress: emergencyContactValues && {
+        emergencyContactAddress: emergencyContactValues && patient && patient.emergencyContact && {
           ...this.constructAddress(emergencyContactValues),
           address: patient && patient.emergencyContact && patient.emergencyContact.address
         },

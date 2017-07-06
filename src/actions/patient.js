@@ -176,6 +176,8 @@ const constructPatient = (patient, dispatch) => {
             patient.emergencyContact = emergencyContact;
             dispatch(loadPatientSuccess(patient));
           });
+      } else {
+        dispatch(loadPatientSuccess(patient));
       }
     });
 }
@@ -222,6 +224,32 @@ const getPatientsByKeyword = (page, keyword) => {
   };
 };
 
+const postEmergencyContact = (emergencyContact, emergencyContactAddress, patientLink) => {
+  if (emergencyContact && (emergencyContact.firstName || emergencyContact.lastName)) {
+    if (emergencyContact.firstName && !emergencyContact.lastName) {
+      emergencyContact.lastName = " ";
+    }
+
+    if (emergencyContact.lastName && !emergencyContact.firstName) {
+      emergencyContact.firstName = " ";
+    }
+
+    return post({
+      url: EMERGENCY_CONTACT_API_URL,
+      data: { ...emergencyContact, patient: patientLink }
+    })
+      .then(response => response.json())
+      .then(json => {
+        const link = json._links;
+        post({
+          url: EMERGENCY_CONTACT_ADDRESS_API_URL,
+          data: { ...emergencyContactAddress, emergencyContact: link.emergencyContact.href }
+        })
+      })
+  }
+  return null;
+}
+
 const addPatientDetail = ({ patient, patientAddress, emergencyContact, emergencyContactAddress, paymentInfo }) => {
   return (dispatch) => {
     dispatch(addPatient());
@@ -237,20 +265,8 @@ const addPatientDetail = ({ patient, patientAddress, emergencyContact, emergency
         url: PATIENT_ADDRESS_API_URL,
         data: { ...patientAddress, patient: link.patient.href }
       }));
-      request.push(
-        post({
-          url: EMERGENCY_CONTACT_API_URL,
-          data: { ...emergencyContact, patient: link.patient.href }
-        })
-          .then(response => response.json())
-          .then(json => {
-            const link = json._links;
-            post({
-              url: EMERGENCY_CONTACT_ADDRESS_API_URL,
-              data: { ...emergencyContactAddress, emergencyContact: link.emergencyContact.href }
-            })
-          })
-      );
+
+      request.push(postEmergencyContact(emergencyContact, emergencyContactAddress, link.patient.href));
 
       paymentInfo.memberNumber = "0";
       paymentInfo.providerName = " ";
@@ -294,19 +310,31 @@ const updatePatientDetail = (isUpdate, { id, patient, patientAddress, emergencyC
         data: patientAddress
       }));
 
-      if (emergencyContact) {
-        request.push(
-          put({
-            url: emergencyContact.link.emergencyContact.href,
-            data: emergencyContact
-          })
-        );
-        emergencyContact.address && request.push(
-          put({
-            url: emergencyContact.address._links.emergencyContactAddress.href,
-            data: emergencyContactAddress
-          })
-        );
+      if (emergencyContact && (emergencyContact.firstName || emergencyContact.lastName)) {
+        if (emergencyContact.firstName && !emergencyContact.lastName) {
+          emergencyContact.lastName = " ";
+        }
+
+        if (emergencyContact.lastName && !emergencyContact.firstName) {
+          emergencyContact.firstName = " ";
+        }
+
+        if (emergencyContact.link) {
+          request.push(
+            put({
+              url: emergencyContact.link.emergencyContact.href,
+              data: emergencyContact
+            })
+          );
+          emergencyContact.address && request.push(
+            put({
+              url: emergencyContact.address._links.emergencyContactAddress.href,
+              data: emergencyContactAddress
+            })
+          );
+        } else {
+          request.push(postEmergencyContact(emergencyContact, emergencyContactAddress, patient.link));
+        }
       }
 
       paymentInfo.link.insurancePaymentInfo && request.push(

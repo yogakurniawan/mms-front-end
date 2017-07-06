@@ -24,7 +24,7 @@ class Payment extends Component {
   renderSponsor = (
     <div>
       <SubTitle>SPONSOR</SubTitle>
-      <Divider style={{ backgroundColor: 'rgb(0, 130, 203)' }} />
+      <Divider style={{ backgroundColor: '#6200C0' }} />
       <Row>
         <Col xs={12} sm={6} md={3} lg={3}>
           <Field id="rms-emp-details-sponsor-firstname" fullWidth={true} name="sponsorFirstName" component={renderTextField} label="First, Middle Name" />
@@ -77,7 +77,7 @@ class Payment extends Component {
   renderInsuranceDetails = (
     <div>
       <SubTitle>DETAILS</SubTitle>
-      <Divider style={{ backgroundColor: 'rgb(0, 130, 203)' }} />
+      <Divider style={{ backgroundColor: '#6200C0' }} />
       <Row>
         <Col xs={12} sm={6} md={3} lg={3}>
           <Field
