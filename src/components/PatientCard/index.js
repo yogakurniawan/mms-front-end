@@ -16,7 +16,7 @@ const PatientCard = ({ patient, onExpandChange, onClickPatient }) => {
   return (
     <Card
       onExpandChange={onExpandChange}
-      style={{ marginTop: 10, marginBottom: 10, paddingBottom: 10, paddingTop: 5 }}>
+      style={{ marginTop: 5, marginBottom: 10, paddingBottom: 5, paddingTop: 5 }}>
       <CardTitle
         title={<Title onClick={onClickPatient} patient={patient} />}
         style={{ padding: '0 10px 0 10px' }} />
@@ -24,7 +24,7 @@ const PatientCard = ({ patient, onExpandChange, onClickPatient }) => {
         subtitle={<SubTitle patient={patient} />}
         actAsExpander={true}
         showExpandableButton={true}
-        style={{ padding: '0 10px 5px 10px' }} />
+        style={{ padding: '0 10px 0 10px' }} />
       <CardText expandable>
         <Detail details={[
           {

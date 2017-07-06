@@ -85,7 +85,7 @@ class SearchPatient extends Component {
           </Col>
           <Col xs={12} sm={12} md={12} lg={11}>
             {loading && <LoadingMask />}
-            <div style={{ minHeight: '65vh' }}>
+            <div style={{ marginTop: 10, minHeight: '60vh' }}>
               <Row start="xs">
                 {
                   patients && patients.map((patient) => (
