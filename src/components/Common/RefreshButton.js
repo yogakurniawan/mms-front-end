@@ -10,6 +10,10 @@ const RefreshButton = ({ label, refresh }) => <FlatButton
     icon={<NavigationRefresh />}
 />;
 
+RefreshButton.defaultProps = {
+    refresh: () => {}
+}
+
 RefreshButton.propTypes = {
     label: PropTypes.string,
     refresh: PropTypes.func.isRequired

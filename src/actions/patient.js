@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import { BASE_API_URL, DEFAULT_PAGE_SIZE } from 'constants';
 import {
   ADD_PATIENT,
   ADD_PATIENT_SUCCESS,
@@ -11,10 +12,8 @@ import {
   LOAD_PATIENT,
   LOAD_PATIENT_SUCCESS,
   LOAD_PATIENT_ERROR,
-  BASE_API_URL,
   SET_PATIENT_PAGE,
-  DEFAULT_PAGE_SIZE,
-} from 'constants';
+} from 'constants/ActionTypes';
 import { get, post, put } from 'utils/fetch';
 
 const PATIENT_API_URL = `${BASE_API_URL}patients`;

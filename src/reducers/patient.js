@@ -11,7 +11,7 @@ import {
   SET_TAB_VALUE,
   DISABLE_TAB,
   SET_PATIENT_PAGE
-} from 'constants';
+} from 'constants/ActionTypes';
 
 const initialState = {
   loading: {

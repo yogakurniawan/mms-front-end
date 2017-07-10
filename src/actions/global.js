@@ -1,22 +1,12 @@
 import {
-  OPEN_NEW_EMPLOYEE_DIALOG,
-  CLOSE_NEW_EMPLOYEE_DIALOG,
   RESET_FORM,
   SET_PAGE_TITLE,
   TOGGLE_SHOW_SNACKBAR
-} from 'constants';
-
-const openNewEmployeeDialog = () => ({
-  type: OPEN_NEW_EMPLOYEE_DIALOG
-});
+} from 'constants/ActionTypes';
 
 const setPageTitle = payload => ({
   type: SET_PAGE_TITLE,
   payload
-});
-
-const closeNewEmployeeDialog = () => ({
-  type: CLOSE_NEW_EMPLOYEE_DIALOG
 });
 
 const resetForm = () => ({
@@ -29,8 +19,6 @@ const toggleShowSnackBar = (payload) => ({
 });
 
 export default {
-  openNewEmployeeDialog,
-  closeNewEmployeeDialog,
   resetForm,
   setPageTitle,
   toggleShowSnackBar

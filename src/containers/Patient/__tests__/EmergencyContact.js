@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
 import EmergencyContact from '../EmergencyContact';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import SelectField from 'components/Form/SelectField';
 
 injectTapEventPlugin();
 
@@ -43,14 +43,14 @@ describe('>>>EMERGENCY CONTACT --- REACT-REDUX (Mount + wrapping in <Provider>)'
     beforeEach(() => {
         store = mockStore();
         wrapper = mount(<MuiThemeProvider><Provider store={store}><EmergencyContact /></Provider></MuiThemeProvider>)
-    })
+    });
 
-    // it('+++ contains header - h2', () => {
-    //     expect(wrapper.contains(<h2>using React and Redux</h2>)).toBe(true)
-    // });
+    it('+++ contains header - h2', () => {
+        expect(wrapper.find(SelectField).length).toEqual(5);
+    });
 
     it('+++ render the connected(SMART) component', () => {
-        expect(wrapper.find(EmergencyContact).length).toEqual(1)
+        expect(wrapper.find(EmergencyContact).length).toEqual(1);
     });
 
     // it('+++ check Prop matches with initialState', () => {

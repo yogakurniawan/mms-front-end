@@ -3,6 +3,7 @@ import Cookie from 'js-cookie';
 import moment from 'moment';
 import qs from 'qs';
 import { saveItem, removeItem } from '../utils/localStorage';
+import { BASE_API_URL } from 'constants';
 import {
   LOGIN,
   LOGIN_SUCCESS,
@@ -10,55 +11,54 @@ import {
   LOAD_USER,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
-  BASE_API_URL,
   LOGOUT,
   LOGOUT_SUCCESS
-} from 'constants';
+} from 'constants/ActionTypes';
 
 const LOGIN_URL = `${BASE_API_URL}/oauth/token`;
 const GET_USER_LOGIN_URL = `${BASE_API_URL}/api/employee/get-login-user`;
 
-function loadUser() {
+export function loadUser() {
   return {
     type: LOAD_USER
   }
 }
 
-function loadUserSuccess(payload) {
+export function loadUserSuccess(payload) {
   return {
     type: LOAD_USER_SUCCESS,
     payload
   }
 }
 
-function loadUserFail(error) {
+export function loadUserFail(error) {
   return {
     type: LOAD_USER_FAIL,
     error
   }
 }
 
-function doLogin() {
+export function doLogin() {
   return {
     type: LOGIN
   }
 }
 
-function loginSuccess(payload) {
+export function loginSuccess(payload) {
   return {
     type: LOGIN_SUCCESS,
     payload
   }
 }
 
-function loginFail(error) {
+export function loginFail(error) {
   return {
     type: LOGIN_FAIL,
     error
   }
 }
 
-const getLoggedInUserInfo = () => {
+export const getLoggedInUserInfo = () => {
   const config = {
     method: 'GET',
     headers: {
@@ -80,7 +80,7 @@ const getLoggedInUserInfo = () => {
   };
 }
 
-const login = (username, password) => {
+export const login = (username, password) => {
   const config = {
     method: 'POST',
     headers: {
@@ -113,7 +113,7 @@ const login = (username, password) => {
   };
 };
 
-const refreshToken = (refresh_token) => {
+export const refreshToken = (refresh_token) => {
   const config = {
     method: 'POST',
     headers: {
@@ -139,19 +139,19 @@ const refreshToken = (refresh_token) => {
   });
 };
 
-function doLogout() {
+export function doLogout() {
   return {
     type: LOGOUT
   }
 }
 
-function logoutSuccess() {
+export function logoutSuccess() {
   return {
     type: LOGOUT_SUCCESS
   }
 }
 
-const logout = () => {
+export const logout = () => {
   return (dispatch) => {
     dispatch(doLogout());
     Cookie.remove('token');
@@ -160,10 +160,3 @@ const logout = () => {
     window.location.replace('/');
   };
 };
-
-export default {
-  login,
-  getLoggedInUserInfo,
-  logout,
-  refreshToken
-}

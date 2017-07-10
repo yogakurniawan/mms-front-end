@@ -8,7 +8,7 @@ import {
   LOGOUT,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL
-} from 'constants';
+} from 'constants/ActionTypes';
 
 const initialState = {
   loadingUser: false,
