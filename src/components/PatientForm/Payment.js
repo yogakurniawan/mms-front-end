@@ -6,7 +6,7 @@ import { Col, Row } from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import CircularProgress from 'material-ui/CircularProgress';
-import { renderTextField } from 'components/Form';
+import { renderTextField } from 'utils/form';
 import SelectField from 'components/Form/SelectField';
 import SubTitle from './SubTitle';
 import {

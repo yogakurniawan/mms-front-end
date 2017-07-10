@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Col, Row } from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
-import { renderTextField } from 'components/Form';
+import { renderTextField } from 'utils/form';
 import SelectField from 'components/Form/SelectField';
 import {
   titles,

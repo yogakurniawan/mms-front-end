@@ -25,11 +25,15 @@ export const renderCheckbox = ({ input, label }) => (
 );
 
 export const renderSelectField = ({
-  input,
+  input: {
+    onChange,
+    onBlur,
+    value,
+    ...rest
+  },
   label,
   meta: { touched, error },
-  children,
-  ...custom
+  children
 }) => (
     <SelectField
       dropDownMenuProps={{ animated: true }}
@@ -37,15 +41,13 @@ export const renderSelectField = ({
       floatingLabelText={label}
       floatingLabelFixed={true}
       errorText={touched && error}
-      {...input}
-      value={input.value}
-      onChange={(event, index, value) => input.onChange(value)}
-      onBlur={(event, index, value) => input.onBlur(value)}
+      {...rest}
+      value={value}
+      onChange={(event, index, value) => onChange(value)}
+      onBlur={(event, index, value) => onBlur(value)}
       children={children}
-      {...custom}
     />
   );
-
 
 export const renderAutoComplete = ({ input, label, meta: { touched, error }, ...custom }) => (
   <AutoComplete hintText={label}

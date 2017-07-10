@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import MenuItem from 'material-ui/MenuItem';
-import { renderSelectField } from './index';
+import { renderSelectField } from 'utils/form';
 import { generate } from 'utils/uuid';
 
 const SelectField = ({ id, name, items, label, ...custom }) => (

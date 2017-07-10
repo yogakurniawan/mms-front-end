@@ -5,7 +5,7 @@ import { Col, Grid } from 'react-flexbox-grid';
 import { Field } from 'redux-form';
 import { tenants } from 'dummy/lookups';
 import SelectField from 'components/Form/SelectField';
-import { renderTextField } from 'components/Form';
+import { renderTextField } from 'utils/form';
 import ContentBox from './ContentBox';
 import ContainerBox from './ContainerBox';
 import HeaderBox from './HeaderBox';

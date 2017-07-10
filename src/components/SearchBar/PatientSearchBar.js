@@ -3,7 +3,7 @@ import { Row, Col } from 'react-flexbox-grid';
 import { Field } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { renderTextField } from 'components/Form';
+import { renderTextField } from 'utils/form';
 const styles = {
   floatingLabelStyle: {
     color: "#6200C0",

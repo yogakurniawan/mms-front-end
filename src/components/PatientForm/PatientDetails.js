@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { DatePicker } from 'redux-form-material-ui';
 import { Col, Row } from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
-import { renderTextField, renderCheckbox } from 'components/Form';
+import { renderTextField, renderCheckbox } from 'utils/form';
 import SelectField from 'components/Form/SelectField';
 import {
   titles,

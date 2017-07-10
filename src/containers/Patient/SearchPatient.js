@@ -7,7 +7,6 @@ import { Row, Col } from 'react-flexbox-grid';
 import PatientCard from 'components/PatientCard';
 import Pagination from 'components/Pagination';
 import LoadingMask from 'components/Common/LoadingMask';
-import { generate } from 'utils/uuid';
 import {
   global as globalActions,
   patient as patientActions
@@ -89,7 +88,7 @@ class SearchPatient extends Component {
               <Row start="xs">
                 {
                   patients && patients.map((patient) => (
-                    <Col key={generate()} xs={12} sm={12} md={6} lg={6}>
+                    <Col key={patient.id} xs={12} sm={12} md={6} lg={6}>
                       <PatientCard onClickPatient={() => this.onClickPatient(patient)} patient={patient} />
                     </Col>
                   ))
